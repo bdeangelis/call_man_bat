@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en" ng-app>
+<head>
+	
+	<!-- start: Meta -->
+	<meta charset="utf-8">
+	<title>LeFutur | Create a New Account</title>
+	<meta name="description" content="Call Center test">
+	<meta name="author" content="NL Ross">
+	<!-- end: Meta -->
+
+        <!--Angular-->
+        <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js'></script>
+        <script src='Callcenter.js'></script>
+        <!--End Angular-->
+	
+	<!-- start: Mobile Specific -->
+<!--	<meta name="viewport" content="width=device-width, initial-scale=1">-->
+	<!-- end: Mobile Specific -->
+	
+	<!-- start: CSS -->
+	<link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
+<!--	<link href="css/bootstrap-responsive.min.css" rel="stylesheet">-->
+	<link id="base-style" href="css/style.css" rel="stylesheet">
+<!--	<link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">-->
+	
+	<!--[if lt IE 7 ]>
+	<link id="ie-style" href="css/style-ie.css" rel="stylesheet">
+	<![endif]-->
+	<!--[if IE 8 ]>
+	<link id="ie-style" href="css/style-ie.css" rel="stylesheet">
+	<![endif]-->
+	<!--[if IE 9 ]>
+	<![endif]-->
+	
+	<!-- end: CSS -->
+	
+
+	<!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<!-- start: Favicon -->
+	<link rel="shortcut icon" href="img/favicon.ico">
+	<!-- end: Favicon -->
+	
+		
+		
+		
+</head>
+
+<body id="new_user_page">
+
+
+	<div class="container-fluid">
+		<div class="row-fluid">
+
+			<div class="new_user_box">
+			<div class="box">
+					<div data-original-title="" class="box-header">
+						<h2><i class="icon-edit"></i><span class="break"></span>Create a New Account</h2>
+						<div class="box-icon">
+							<a class="btn-setting" href="#"><i class="icon-wrench"></i></a>
+							<a class="btn-minimize" href="#"><i class="icon-chevron-up"></i></a>
+							<a class="btn-close" href="#"><i class="icon-remove"></i></a>
+						</div>
+					</div>
+					<div class="box-content">
+						<form class="form-horizontal">
+							<fieldset>
+							  
+							  
+							  <div class="control-group">
+							  	<label for="account_type" class="control-label">Account Type</label>
+								  <div class="controls">
+								    <select id="account_type">
+								  	<option>Select your account type...</option>
+								  	<option>Operator</option>
+								  	<option>Administrator</option>
+								    </select>
+							  	</div>
+							  </div>
+							  
+							    <div class="control-group">
+								
+								<label for="focusedInput" class="control-label">First Name</label>
+								<div class="controls">
+								  <input type="text"  id="first_name" class="input-xlarge focused">
+								</div>
+							  </div>
+                              
+                            <div class="control-group">
+								<label for="focusedInput" class="control-label">Last Name</label>
+								<div class="controls">
+								  <input type="text"  id="last_name" class="input-xlarge focused">
+								</div>
+						    </div>
+                              
+                                <div class="control-group">
+								<label for="focusedInput" class="control-label">ID</label>
+								<div class="controls">
+								  <input type="text"  id="id_number" class="input-xlarge focused">
+								</div>
+							  </div>
+                              
+                                <div class="control-group">
+								<label for="focusedInput" class="control-label">Operator Extension</label>
+								<div class="controls">
+								  <input type="text"  id="operator_extension" class="input-xlarge focused">
+								</div>
+							  </div>
+                              
+                                <div class="control-group">
+								<label for="focusedInput" class="control-label">Username</label>
+								<div class="controls">
+								  <input type="text"  id="acct_username" class="input-xlarge focused">
+								</div>
+						    </div>
+                              
+                                <div class="control-group">
+								<label for="focusedInput" class="control-label">Password</label>
+								<div class="controls">
+								  <input type="text"  id="acct_password" class="input-xlarge focused">
+								</div>
+						    </div>
+						    
+						    <div class="control-group">
+						    	<label for="focusedInput" class="control-label">Verify Password</label>
+						    	<div class="controls">
+						      	<input type="text"  id="verify_password" class="input-xlarge focused">
+						    	</div>
+						    </div>
+                              
+				     
+							  <div class="form-actions">
+								<button class="btn btn-primary" type="submit">Save changes</button>
+								<button class="btn">Cancel</button>
+							  </div>
+							</fieldset>
+						  </form>
+					
+						</div>
+					</div>
+				</div>
+			</div>
+				
+
+	</body>
+</html>

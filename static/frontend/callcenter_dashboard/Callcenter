@@ -1,0 +1,49 @@
+//This initiates the call_queue name space
+var call_queue = angular.module('call_queue', []); 
+
+//Referneces the call_queue namespace and adds the controller
+call_queue.controller('doctor_info_controller',          
+function ($scope, $http) {
+    $http.get('../test.json').success(function(data, status, headers, config){
+        $scope.doctors = data;});
+    $scope.change_row_status_and_color = function () {
+       $(".queue_row").click(function() {
+       $(".queue_row").removeClass("selected_call"); /* removes the "selected_call class from every other div but the current selected"*/ 
+       $(this).addClass("selected_call");
+       $(this).find(".queue_col5").text("answered"); /* changes text to answered when call is selected*/
+       $("#account_info").text("foo");});
+       $(".queue_row").dblclick(function() {
+       $(".queue_row").removeClass("selected_call"); /* removes the "selected_call class from every other div but the current selected"*/ 
+       $(this).addClass("selected_call");
+       $(this).find(".queue_col5").text("hold"); /* changes text to hold when call is selected*/
+       });
+
+    }
+});
+
+//Referneces the call_queue namespace and adds the controller
+//call_queue.controller('doctor_info_controller',          
+//function ($scope) {
+         // $scope.doctors=[ {doctors_name:'Dr Chang Exchange', acct_number:'8202',ticket_number:'3', duration_of_call:'4', call_status:'ringing'},
+         //   {doctors_name:'Layman PCS Services', acct_number:'8218',ticket_number:'1', duration_of_call:'3', call_status:'ringing'},
+         //   {doctors_name:'Dr Phil', acct_number:'8293',ticket_number:'2', duration_of_call:'2', call_status:'ringing'},
+          //  {doctors_name:'Dr Seus', acct_number:'8202',ticket_number:'4', duration_of_call:'1', call_status:'standby'},
+         //   {doctors_name:'Dr Pepper', acct_number:'8654',ticket_number:'5', duration_of_call:'7', call_status:'ringing'},
+         //   {doctors_name:'Dr Lector', acct_number:'8874',ticket_number:'6', duration_of_call:'2', call_status:'standby'},  
+         //   {doctors_name:'Dr J', acct_number:'8874',ticket_number:'6', duration_of_call:'2', call_status:'standby'}  
+         //   {doctors_name:'Dr ', acct_number:'8874',ticket_number:'6', duration_of_call:'2', call_status:'standby'}  
+         //   ];
+ //         var data_url = "http://localhost:9090/call_manager/call_manager/frontend/test.json";
+ //         var container=[];
+ //         $.getJSON(data_url, function(data){
+ //                 $.each(data, function(){
+ //                      console.log(this); 
+ //                      container.push(this); 
+ //                     });
+
+   //           });
+   //       $scope.doctors=container;
+   //       alert($scope.doctors);
+   //       });
+
+

@@ -1,0 +1,52 @@
+<!doctype html>
+<html ng-app>
+<head>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script> 
+  <script type="text/javascript" src="todo.js"></script> 
+  <link rel="stylesheet" href="todo.css">
+</head>
+<body>
+<div ng-controller="TodoCtrl" id="main" class="box">
+  <div id="left-top-box" class="box">
+    <div class="top-header box">08/25/2013 02:35:48PM  Optr: 10 Brett D  Login:08/25/2013 08:30:55AM
+</div>
+    <div class="header box">ACCT</div>
+    <div class="header box">TK#</div>
+    <div class="header box">DUR</div>
+    <div class="header box">STATUS</div>
+    <hr>
+    <div id="list">
+    <ol>
+      <li ng-repeat="todo in todos">{{todo.text}}</li>
+    </ol>
+    <ul>
+      <li ng-repeat="todo in todos">{{todo.state}}</li>
+    </ul>
+    <ul>
+      <li ng-repeat="todo in todos">{{todo.acct}}</li>
+    </ul>
+
+
+    </div>
+    {{totalTodos}}
+  </div>
+
+  <div id="right-top-box" class="box">
+    <p><input type="text" ng-model="name"></input></p> 
+  </div>
+  
+  <div id="center-box" class="box">
+   <p>{{name}}</p>
+  </div>
+  
+  <div ng-controller="TodoCtrl" id="left-bottom-box" class="box">
+    {{totalTodos}}
+  </div>
+  
+  <div ng-controller="TodoCtrl" id="right-bottom-box" class="box">
+    {{totalTodos}}
+  </div>
+</div>
+</body>
+</html>
+
