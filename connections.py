@@ -15,7 +15,7 @@ class QueryConnection(SocketConnection):
         def finish():
             callback('Handled %s.' % value)
 
-        ioloop.IOLoop.instance().add_timeout(timedelta(seconds=3), finish)
+        ioloop.IOLoop.instance().add_timeout(timedelta(seconds=1), finish)
 
     @event
     def query(self, num):

@@ -12,6 +12,8 @@
         <!--Angular-->
         <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js'></script>
         <script src='Callcenter.js'></script>
+        <script src='../../js/gen.js'></script> 
+        <script src='../../js/socket.io.js'></script> 
         <!--End Angular-->
 	<!--jQuery-->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>   
@@ -94,7 +96,7 @@ if (document.getElementById) onload = function () {
 			<div class="row-fluid">
 				
 		
-				<div id="content" class="span12">
+				<div id="content" class="span12" ng-controller='SocketIOGenCtrl'>
 				<!-- start: Content -->
 				
 					<div class="row">
@@ -122,6 +124,13 @@ if (document.getElementById) onload = function () {
 												<div class="queue_col4" id="row_{{$index + 1}}" ><p>{{doctor.duration_of_call}}</p></div>
 												<div class="queue_col5" id="row_{{$index + 1}}" ><p ng-model="doctor.call_status">{{doctor.call_status}}</p></div>				
 											</div>
+											<form id="chatform">
+          <div class="lead">{{sending}}</div>
+          <input id='btn' type='submit' class="btn btn-large btn-success" ng-click="submit()"/>
+        </form>
+        <div class="lead">
+            <div ng-repeat="data in result">{{data}}<div>
+        </div>
 										</div>
 								</div>
 							</div>

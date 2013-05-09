@@ -33,7 +33,7 @@ def load_app(port, root):
         (r"/static-grid", StaticGridHandler),
         (r"/ajax-grid", AjaxGridHandler),
         (r"/angular-ui", AngularUIHandler),
-        (r"/gen", SocketIOGenHandler)
+        (r"/", SocketIOGenHandler)
     ]
 
     try:
