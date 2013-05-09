@@ -47,18 +47,18 @@ function ($scope, $http) {
     };
 
 
-//changing the selected row to status on hold when the row is double clicked
-    $scope.on_hold = function (row) {
-        $scope.doctor_list.call_status="on hold";
+// //changing the selected row to status on hold when the row is double clicked
+//     $scope.on_hold = function (row) {
+//         $scope.doctor_list.call_status="on hold";
 
-    };
+//     };
 
-//select message list item and display in message maintain area
-    $scope.show_row= function(message_row){
-        $scope.selected_message_row=(message_row);
-        var selected_message = $scope.selected_message_row
-        $scope.message_maintain=$scope.doctor_list.messages[selected_message];
-    };
+// //select message list item and display in message maintain area
+//     $scope.show_row= function(message_row){
+//         $scope.selected_message_row=(message_row);
+//         var selected_message = $scope.selected_message_row
+//         $scope.message_maintain=$scope.doctor_list.messages[selected_message];
+//     };
 //display index0 of message list
     $scope.display_index0_message = function(){
         $scope.message_maintain=$scope.doctor_list.messages[0];
