@@ -11,10 +11,18 @@ function SocketIOGenCtrl($scope, $http) {
     query.on('disconnect', function() {
         query.socket.reconnect();
     });
+    
+    // // New Connection
+    // query.on('connect', function(data) {
+    //     $scope.$apply(function () {
+    //         $scope.result.push(data);
+    //     });
+    // });
 
     // Query
     query.on('response', function(data) {
         $scope.$apply(function () {
+            $scope.result=[];
             $scope.result.push(data);
         });
     });
@@ -25,6 +33,8 @@ function SocketIOGenCtrl($scope, $http) {
         $scope.sending = 'Sent ' + $scope.num + '...';
         $scope.num += 1;
     };
+
+
     //changing the selected row to status on hold when the row is double clicked
     $scope.on_hold = function (row) {
         $scope.doctor_list.call_status="on hold";
@@ -38,19 +48,16 @@ function SocketIOGenCtrl($scope, $http) {
         $scope.message_maintain=$scope.doctor_list.messages[selected_message];
     };
 
-
+    //display index0 of message list
+    $scope.display_index0_message = function(){
+        $scope.message_maintain=$scope.doctor_list.messages[0];
+        $scope.selected_message_row=[0];
+    };
 
     $scope.change_row_status_and_color = function (row) {
-        // $scope.selectedRow = row;
-        // $scope.doctor_list=$scope.doctors[row];
-        // $scope.doctor_list.call_status="answered";
-        // $scope.message_maintain= " ";
         $scope.selectedRow = row;
         $scope.doctor_list=$scope.result[0][row];
         $scope.doctor_list.call_status="answered";
         $scope.message_maintain= " ";
-        // alert($scope.doctor_list);
-
-
     };
 }

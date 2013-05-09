@@ -18,7 +18,7 @@ class QueryConnection(SocketConnection):
             newson = jsoner()
             ##print newson
             callback(newson)
-            newson = jsoner()
+
 
         ioloop.IOLoop.instance().add_timeout(timedelta(seconds=1), finish)
 
@@ -32,8 +32,19 @@ class QueryConnection(SocketConnection):
         remake_json=jsoner()
         response = yield gen.Task(self.long_running, remake_json)
         self.emit('response', response)
-        print response ## Response here is a list need to pass the 0 index of list to Angular
+        #print response ## Response here is a list need to pass the 0 index of list to Angular
                                 ## Response prints the callback info
+## Creating a new event
+    @event
+    def new_connect(self, num):
+        """Event implementation
+
+        Because on_event() was wrapped with ``gen.sync_engine``, yield will be treated
+        as asynchronous task.
+        """
+        remake_json=jsoner()
+        response = yield gen.Task(self.long_running, remake_json)
+        self.emit('response', response)
 
     @gen.engine
     def on_event(self, name, *args, **kwargs):

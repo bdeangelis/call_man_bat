@@ -119,10 +119,10 @@ if (document.getElementById) onload = function () {
 											</div>
 										
 											<div class="queue_row ng-cloak" ng-repeat='doctor in result[0]'| orderBy:"duration_of_call" ng-dblclick="on_hold($index)" ng-click="change_row_status_and_color($index)" ng-class='{selected_call: $index==selectedRow}'>
-												<div class="queue_col1 ng-cloak" id="row_{{$index + 1}}"><p ng-bind= "doctor.doctors_name"></p></div>
-												<div class="queue_col2 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.acct_number}}</p></div>
-												<div class="queue_col3 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.ticket_number}}</p></div>
-												<div class="queue_col4 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.duration_of_call}}</p></div>
+												<div class="queue_col1 ng-cloak" id="row_{{$index + 1}}"><p ng-model="doctor.doctors_name">{{doctor.doctors_name}}</p></div>
+												<div class="queue_col2 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.acct_number">{{doctor.acct_number}}</p></div>
+												<div class="queue_col3 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.ticket_number">{{doctor.ticket_number}}</p></div>
+												<div class="queue_col4 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.duration_of_call">{{doctor.duration_of_call}}</p></div>
 												<div class="queue_col5 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.call_status">{{doctor.call_status}}</p></div>				
 											</div>
 											<form id="chatform">

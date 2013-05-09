@@ -6,9 +6,13 @@ call_queue.controller('doctor_info_controller',
 function ($scope, $http) {
 //make tabs work
 	$scope.selectedTab = 1;
+
+    
 //using http to get the json file info and pass it to the view as doctors
     $http.get('../test.json').success(function(data, status, headers, config){
         $scope.doctors = data;});
+
+
 //changing the class to selected_row using ng-class in the view and calling this function with ng-click
     $scope.change_row_status_and_color = function (row) {
         $scope.selectedRow = row;
@@ -59,14 +63,20 @@ function ($scope, $http) {
 //         var selected_message = $scope.selected_message_row
 //         $scope.message_maintain=$scope.doctor_list.messages[selected_message];
 //     };
-//display index0 of message list
-    $scope.display_index0_message = function(){
-        $scope.message_maintain=$scope.doctor_list.messages[0];
-        $scope.selected_message_row=[0];
-    };
+
+
+// //display index0 of message list
+//     $scope.display_index0_message = function(){
+//         $scope.message_maintain=$scope.doctor_list.messages[0];
+//         $scope.selected_message_row=[0];
+//     };
+
+// Stubb script for the exit function
    $scope.exit= function(){
        alert("exiting");
    }
+
+// Stubb function to clear all the Message fields
    $scope.message_cancel= function(){
        var clear_form_info;
        clear_form_info=confirm("Are you sure you want to cancel?");
