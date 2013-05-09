@@ -6,14 +6,15 @@
 	<meta charset="utf-8">
 	<title>Front-end Test</title>
 	<meta name="description" content="Call Center test">
-	<meta name="author" content="NL Ross">
+	<meta name="author" content="BCI">
 	<!-- end: Meta -->
 
         <!--Angular-->
         <script src='http://ajax.googleapis.com/ajax/libs/angularjs/1.0.3/angular.js'></script>
         <script src='Callcenter.js'></script>
-        <script src='../../js/gen.js'></script> 
-        <script src='../../js/socket.io.js'></script> 
+        <script src='../../js/gen.js'></script>
+        <script src='../../js/Callcenter.js'></script>
+
         <!--End Angular-->
 	<!--jQuery-->
         <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>   
@@ -66,7 +67,7 @@
 						<div id="header_logo" class="span3">
 							<span class="header_hl1">L</span><span class="header_e">e</span><span class="header_hl2">Futur</span><span class="break"></span>
 						</div>
-						<div id="user_bar" class="span6">
+						<div id="user_bar" class="span7">
 
 							<h1>Logged In</h1><p id="user_id"><script type="text/javascript">
 document.write ('<p><h4>Current time is:</h4> <span id="date-time">', new Date().toLocaleString(), '<\/span>.<\/p>')
@@ -74,14 +75,14 @@ if (document.getElementById) onload = function () {
 	setInterval ("document.getElementById ('date-time').firstChild.data = new Date().toLocaleString()", 50)
 }
 </script>
-<h4>Operator:</h4> Nathan L Ross <h4>Login:</h4>   <script language="javascript">
+<h4>Operator:</h4> Administrator <h4>Login:</h4>   <script language="javascript">
  <!--
  var today = new Date();
  document.write(today);
  //-->
  </script></p>
 						</div>
-						<div id="login_bar" class="span2 offset2">
+						<div id="login_bar" class="span2">
 							<button class="btn btn-danger">Log Out
 							</button>
 							</div>
@@ -96,7 +97,7 @@ if (document.getElementById) onload = function () {
 			<div class="row-fluid">
 				
 		
-				<div id="content" class="span12" ng-controller='SocketIOGenCtrl'>
+				<div id="content" class="span12">
 				<!-- start: Content -->
 				
 					<div class="row">
@@ -117,20 +118,13 @@ if (document.getElementById) onload = function () {
 												<div class="queue_col5"><p>Status</p></div>				
 											</div>
 										
-											<div class="queue_row" ng-repeat='doctor in doctors'| orderBy:"duration_of_call" ng-dblclick="on_hold($index)" ng-click="change_row_status_and_color($index)" ng-class='{selected_call: $index==selectedRow}'>
-												<div class="queue_col1" id="row_{{$index + 1}}"><p ng-bind= "doctor.doctors_name"></p></div>
-												<div class="queue_col2" id="row_{{$index + 1}}" ><p>{{doctor.acct_number}}</p></div>
-												<div class="queue_col3" id="row_{{$index + 1}}" ><p>{{doctor.ticket_number}}</p></div>
-												<div class="queue_col4" id="row_{{$index + 1}}" ><p>{{doctor.duration_of_call}}</p></div>
-												<div class="queue_col5" id="row_{{$index + 1}}" ><p ng-model="doctor.call_status">{{doctor.call_status}}</p></div>				
+											<div class="queue_row ng-cloak" ng-repeat='doctor in doctors'| orderBy:"duration_of_call" ng-dblclick="on_hold($index)" ng-click="change_row_status_and_color($index)" ng-class='{selected_call: $index==selectedRow}'>
+												<div class="queue_col1 ng-cloak" id="row_{{$index + 1}}"><p ng-bind= "doctor.doctors_name"></p></div>
+												<div class="queue_col2 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.acct_number}}</p></div>
+												<div class="queue_col3 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.ticket_number}}</p></div>
+												<div class="queue_col4 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.duration_of_call}}</p></div>
+												<div class="queue_col5 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.call_status">{{doctor.call_status}}</p></div>				
 											</div>
-											<form id="chatform">
-          <div class="lead">{{sending}}</div>
-          <input id='btn' type='submit' class="btn btn-large btn-success" ng-click="submit()"/>
-        </form>
-        <div class="lead">
-            <div ng-repeat="data in result">{{data}}<div>
-        </div>
 										</div>
 								</div>
 							</div>
@@ -144,14 +138,21 @@ if (document.getElementById) onload = function () {
 							<div class="box-content h_300" id="account_wrap" >
 								<div id="account_head">
 										<div class="acct_row selected_call">
-											<div id="acct_name"><h4>{{doctor_list.doctors_name}}</h4></div>
-											<div id="acct_number"><h4>{{doctor_list.acct_number}}</h4></div>
+											<div id="acct_name" class="ng-cloak"><h4>{{doctor_list.doctors_name}}</h4></div>
+											<div id="acct_number" class="ng-cloak"><h4>{{doctor_list.acct_number}}</h4></div>
 										</div>
+										<form id="chatform">
+          <div class="lead">{{sending}}</div>
+          <input id='btn' type='submit' class="btn btn-large btn-success" ng-click="submit()"/>
+        </form>
+        <div class="lead">
+            <div ng-repeat="data in result">{{data}}<div>
+        </div>
 									</div>
 									
 									<div id="account_notes">
 	
-											<textarea name="account_info" id="account_info" readonly="yes">{{calls.notes}}
+											<textarea name="account_info" id="account_info" readonly="yes" class="ng-cloak">{{calls.notes}}
 											HOME {{doctor_list.account_info.home_number}} 
 											CELL {{doctor_list.account_info.cell_number}}
 											
@@ -198,7 +199,7 @@ if (document.getElementById) onload = function () {
 								<div class="box-content h_200">
 									<div id="msg_maintain" class="span10" >
 										<div class="msg_row">
-											<div class="msg_element"><label>Account Number: <input type="text" name="acct_number" value="{{doctor_list.acct_number}}" /></label></div>
+											<div class="msg_element ng-cloak"><label>Account Number: <input type="text" name="acct_number" value="{{doctor_list.acct_number}}" /></label></div>
 											</div>
 											
 											<div class="msg_row">
@@ -207,7 +208,7 @@ if (document.getElementById) onload = function () {
 												<input type="checkbox" ng-model="message.msg_pa">Pass: <input type="text" name="pass" id="msg_pass" ng-model="message_pass"></input></label>
 												</div>
 												<div class="msg_element"><label class="inline">
-												<input type="checkbox" ng-model="message.msg_pt"">Patch: <input type="text" name="patch" id="msg_patch" ng-model="message_patch" /></label>
+												<input type="checkbox" ng-model="message.msg_pt">Patch: <input type="text" name="patch" id="msg_patch" ng-model="message_patch" /></label>
 												</div>
 											</div>
 											
@@ -243,12 +244,26 @@ if (document.getElementById) onload = function () {
 				<hr>
 				
 					<div class="row"> 
-											<div class="box leftcol">
-												<div class="box-header">
+					
+								<div class="box leftcol">
+										<div class="box-header">
 													<h2>Message List</h2>
 												</div>
-												 <div class="box-content h_300">
-													<div id="msg_list">
+										<div class="box-content h_300">
+										
+										<div class="tabbable">
+										  <ul class="nav nav-tabs">
+										  	<li ng-class="{active: selectedTab == 1}">
+										  	     <a href="#" ng-click="selectedTab = 1;">Call History</a>
+										  	   </li>
+										  	   <li ng-class="{active: selectedTab == 2}">
+										  	     <a href="#" ng-click="selectedTab = 2;">Call Notes</a>
+										  	   </li>									  
+										  	 </ul>
+										  	 
+										  	
+										  	 </div>
+													<div id="msg_list" class="tab-content" ng-show="selectedTab == 1">
 											<!--				table header						-->
 														<div id="msglist_header" class="msglist_row">
 														<div class="msg_col1"><p>&nbsp;</p></div>
@@ -260,18 +275,24 @@ if (document.getElementById) onload = function () {
 															<div class="msg_col7"><p>PT</p></div>				
 														</div>
 														
-													<div class="msglist_row" ng-repeat="message in doctor_list.messages" ng-click="show_row($index)">
-													<div class="msg_col1"><p><i ng-class='{"fa-icon-arrow-right": $index==selected_message_row}'></i></p></div>
-														<div class="msg_col2"><p>{{message.date_and_time}}</p></div>
-														<div class="msg_col3"><a href="" id="example"data-rel="popover"><p>{{message.caller_name}}</p></a></div>
-														<div class="msg_col4"><p>{{message.from}}</p></div>
-														<div class="msg_col5"><p>{{message.call_back_number}}</p></div>		
-														<div class="msg_col6"><p><input type="checkbox" name="msg_pt" ng-model="message.msg_pt" /></p></div>		
-														<div class="msg_col7"><p><input type="checkbox" name="msg_pa" ng-model="message.msg_pa"/></p></div>				
+													<div class="msglist_row ng-cloak" ng-repeat="message in doctor_list.messages" ng-click="show_row($index)">
+													<div class="msg_col1 ng-cloak"><p><i ng-class='{"fa-icon-arrow-right": $index==selected_message_row}'></i></p></div>
+														<div class="msg_col2 ng-cloak"><p>{{message.date_and_time}}</p></div>
+														<div class="msg_col3 ng-cloak"><p>{{message.caller_name}}</p></div>
+														<div class="msg_col4 ng-cloak"><p>{{message.from}}</p></div>
+														<div class="msg_col5 ng-cloak"><p>{{message.call_back_number}}</p></div>		
+														<div class="msg_col6 ng-cloak"><p><input type="checkbox" name="msg_pt" ng-model="message.msg_pt" /></p></div>		
+														<div class="msg_col7 ng-cloak"><p><input type="checkbox" name="msg_pa" ng-model="message.msg_pa"/></p></div>				
 													</div>
 													
 																											
 													</div>
+													
+													<div class="tab-content" ng-show="selectedTab == 2">
+													 Sister Mary Margaret called in due to severe acute hypothaluweirnismist. 
+													</div>
+													
+													
 											</div>
 										</div>
 				
@@ -284,7 +305,7 @@ if (document.getElementById) onload = function () {
 												<div class="box-content h_300" id="account_wrap">
 																	<div id="special_notes">
 									
-																		<textarea name="special_info" id="special_info"  ng-model="doctor_list.special_notes"></textarea>
+																		<textarea name="special_info" id="special_info" class="ng-cloak" ng-model="doctor_list.special_notes"></textarea>
 																	</div>
 																</div>
 														</div>
@@ -305,8 +326,8 @@ if (document.getElementById) onload = function () {
 		
 <!--		<footer>
 			<p>
-				<span style="text-align:left;float:left">&copy; <a href="http://www.badcatinteractive.com" target="_blank">creativeLabs</a> 2013</span>
-				<span style="text-align:right;float:right">Powered by: <a href="#">BadCat Interactive</a></span>
+				<span style="text-align:left;float:left">&copy; <a href="http://clabs.co" target="_blank">creativeLabs</a> 2013</span>
+				<span style="text-align:right;float:right">Powered by: <a href="#">Perfectum Dashboard</a></span>
 			</p>
 
 		</footer>-->
@@ -314,7 +335,6 @@ if (document.getElementById) onload = function () {
 	</div><!--/.fluid-container-->
 
 	<!-- start: JavaScript-->
-
 
 		<script src="js/jquery-1.9.1.min.js"></script>
 	<script src="js/jquery-migrate-1.0.0.min.js"></script>

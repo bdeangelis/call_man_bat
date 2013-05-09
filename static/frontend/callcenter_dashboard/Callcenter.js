@@ -1,11 +1,11 @@
 //This initiates the call_queue name space
 var call_queue = angular.module('call_queue', []); 
 
-
-
 //Referneces the call_queue namespace and adds the controller
 call_queue.controller('doctor_info_controller',          
 function ($scope, $http) {
+//make tabs work
+	$scope.selectedTab = 1;
 //using http to get the json file info and pass it to the view as doctors
     $http.get('../test.json').success(function(data, status, headers, config){
         $scope.doctors = data;});
@@ -47,7 +47,6 @@ function ($scope, $http) {
     };
 
 
-
 //changing the selected row to status on hold when the row is double clicked
     $scope.on_hold = function (row) {
         $scope.doctor_list.call_status="on hold";
@@ -57,19 +56,16 @@ function ($scope, $http) {
     $scope.show_row= function(message_row){
         $scope.selected_message_row=(message_row);
         var selected_message = $scope.selected_message_row
-       // $scope.message_maintain=$scope.doctor_list.messages[selected_message];
-        $("#example").popover({title:"Tools"});
-        
+        $scope.message_maintain=$scope.doctor_list.messages[selected_message];
     };
 //display index0 of message list
     $scope.display_index0_message = function(){
         $scope.message_maintain=$scope.doctor_list.messages[0];
         $scope.selected_message_row=[0];
-        
     };
    $scope.exit= function(){
        alert("exiting");
-   };
+   }
    $scope.message_cancel= function(){
        var clear_form_info;
        clear_form_info=confirm("Are you sure you want to cancel?");
@@ -84,37 +80,8 @@ function ($scope, $http) {
         $scope.message_call_back_ext=" ";
    	    $scope.message_check_number=" ";
         $scope.message_content=" ";
-        };   
-    };
-    $scope.line= function(){
-       alert("line picked up");
-   };
-    $scope.out= function(){
-       alert("dialing out");
-   };
-    $scope.transfer= function(){
-       alert("transfered to another operator");
-   };
-    $scope.standby= function(){
-       alert("call on standby");
-   };
-    $scope.patch= function(){
-       alert("call ready to patch");
-   };
-    $scope.transfer= function(){
-       alert("call transfered");
-   };
-    $scope.hang_up= function(){
-       alert("call ended");
-   };
-    $scope.find_acct= function(){
-       alert("searching for account");
-   };
-    $scope.waive_call= function(){
-       alert("call waived");
-   };
-
-   function SocketIOGenCtrl($scope, $http) {
+        };   };
+        function SocketIOGenCtrl($scope, $http) {
 
     $scope.num = 6;
     $scope.result = [];
@@ -138,7 +105,8 @@ function ($scope, $http) {
         $scope.sending = 'Sent ' + $scope.num + '...';
         $scope.num += 1;
     }
-};
+}
+
 });
 
 

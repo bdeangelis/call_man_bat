@@ -3,6 +3,10 @@
 /* BCI Adjustments
 =================================================================== */
 
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+display: none !important;
+}
+
 
 
 .h_300 {
@@ -54,7 +58,7 @@
 	margin: 10px 5px;
 	position: relative;
 	top: 10px;	
-	right: -230px;
+	right: -150px;
 }
 
 #user_bar {
