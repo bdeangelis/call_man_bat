@@ -6,6 +6,7 @@ from datetime import timedelta
 
 from tornado import ioloop, gen
 from tornadio2 import SocketConnection, TornadioRouter, SocketServer, event, gen
+from jsonmaking import jsoner
 
 class QueryConnection(SocketConnection):
     def long_running(self, value, callback):
@@ -13,7 +14,11 @@ class QueryConnection(SocketConnection):
         Simply adds 3 second timeout and then calls provided callback method.
         """
         def finish():
-            callback('Handled %s.' % value)
+            ## Adding the json list to the response element
+            newson = jsoner()
+            ##print newson
+            callback(newson)
+            newson = jsoner()
 
         ioloop.IOLoop.instance().add_timeout(timedelta(seconds=1), finish)
 
@@ -24,8 +29,11 @@ class QueryConnection(SocketConnection):
         Because on_event() was wrapped with ``gen.sync_engine``, yield will be treated
         as asynchronous task.
         """
-        response = yield gen.Task(self.long_running, num)
+        remake_json=jsoner()
+        response = yield gen.Task(self.long_running, remake_json)
         self.emit('response', response)
+        print response ## Response here is a list need to pass the 0 index of list to Angular
+                                ## Response prints the callback info
 
     @gen.engine
     def on_event(self, name, *args, **kwargs):

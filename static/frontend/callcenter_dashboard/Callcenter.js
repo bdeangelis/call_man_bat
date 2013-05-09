@@ -52,6 +52,7 @@ function ($scope, $http) {
         $scope.doctor_list.call_status="on hold";
 
     };
+
 //select message list item and display in message maintain area
     $scope.show_row= function(message_row){
         $scope.selected_message_row=(message_row);
@@ -81,31 +82,7 @@ function ($scope, $http) {
    	    $scope.message_check_number=" ";
         $scope.message_content=" ";
         };   };
-        function SocketIOGenCtrl($scope, $http) {
 
-    $scope.num = 6;
-    $scope.result = [];
-
-    var query = new io.connect('http://' + window.location.host);
-    // Establish event handlers
-    query.on('disconnect', function() {
-        query.socket.reconnect();
-    });
-
-    // Query
-    query.on('response', function(data) {
-        $scope.$apply(function () {
-            $scope.result.push(data);
-        });
-    });
-
-    $scope.submit = function() {
-        query.emit('query', $scope.num);
-        
-        $scope.sending = 'Sent ' + $scope.num + '...';
-        $scope.num += 1;
-    }
-}
 
 });
 

@@ -118,7 +118,7 @@ if (document.getElementById) onload = function () {
 												<div class="queue_col5"><p>Status</p></div>				
 											</div>
 										
-											<div class="queue_row ng-cloak" ng-repeat='doctor in doctors'| orderBy:"duration_of_call" ng-dblclick="on_hold($index)" ng-click="change_row_status_and_color($index)" ng-class='{selected_call: $index==selectedRow}'>
+											<div class="queue_row ng-cloak" ng-repeat='doctor in result[0]'| orderBy:"duration_of_call" ng-dblclick="on_hold($index)" ng-click="change_row_status_and_color($index)" ng-class='{selected_call: $index==selectedRow}'>
 												<div class="queue_col1 ng-cloak" id="row_{{$index + 1}}"><p ng-bind= "doctor.doctors_name"></p></div>
 												<div class="queue_col2 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.acct_number}}</p></div>
 												<div class="queue_col3 ng-cloak" id="row_{{$index + 1}}" ><p>{{doctor.ticket_number}}</p></div>
@@ -126,12 +126,12 @@ if (document.getElementById) onload = function () {
 												<div class="queue_col5 ng-cloak" id="row_{{$index + 1}}" ><p ng-model="doctor.call_status">{{doctor.call_status}}</p></div>				
 											</div>
 											<form id="chatform">
-          <div class="lead">{{sending}}</div>
+          <!-- <div class="lead">{{sending}}</div> -->
           <input id='btn' type='submit' class="btn btn-large btn-success" ng-click="submit()"/>
         </form>
-        <div class="lead">
+        <!-- <div class="lead">
             <div ng-repeat="data in result">{{data}}<div>
-        </div>
+        </div> -->
 										</div>
 								</div>
 							</div>
@@ -289,7 +289,9 @@ if (document.getElementById) onload = function () {
 													</div>
 													
 													<div class="tab-content" ng-show="selectedTab == 2">
-													 Sister Mary Margaret called in due to severe acute hypothaluweirnismist. 
+													 <div class="msg_element"><label>Caller Name: <input type="text" name="caller_name" value="" ng-model="message_maintain.caller_name"> </input></label></div>
+                      								 <div class="msg_element"><label>Call Back #: <input type="text" size="11" name="callback_number" value="" ng-model="message_maintain.call_back_number"></input><input type="text" name="callback_ext" id="msg_ext" value="" size="6"  placeholder="Ext." ng-model="message_maintain.call_back_ext"></input></label></div>
+                      								 <div class="msg_element"><label>Check # <input type="text" name="check_number" id="msg_check" value="" ng-model="message_maintain.check_number"></input></label></div> 
 													</div>
 													
 													
