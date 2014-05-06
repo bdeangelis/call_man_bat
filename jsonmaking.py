@@ -13,7 +13,7 @@ def process_message(outcome, file_name, operation_type):
 ##Open file
 try:
     open_file=open(input_file, 'w')
-    print "File opened"
+    ##print "File opened"
 except:
     print "Error opening "+input_file
 
@@ -36,7 +36,7 @@ doctors_name=["Dr_K", "Dr. Pepper", "Dr. Lector", "Dr. Seus", "Dr Dre", "Dr. Phi
 special_notes_list=["No more doctors available for the weekend", "All offices closed for Labor Day", "Offices closed till Monday for Christmas",
                     "No Dr. on call Saturdays", "No Dr. on call Fridays", "No Dr. on call Mondays", "No Dr. on call Wednesdays" ,"No Dr. on call Tuesdays",
                     "Office closed for snow"]
-dates=["1/17/2013","12/02/2011", "11/08/2012", "4/1/2010", "5/23/2011","1/15/2013","12/02/2010", "12/08/2012", "6/1/2010", "7/23/2011"]
+dates=["2013-05-13T14:33:03.643Z","2013-05-4T14:33:03.643Z", "2013-05-10T14:33:03.643Z", "2013-05-12T14:33:03.643Z","2013-05-9T14:33:03.643Z","2013-05-12T15:35:03.643Z", "2013-05-12T14:33:03.643Z", "2013-05-9T14:35:03.645Z", "2013-05-9T15:39:03.643Z"]
 first_name=["Bob", "Peter", "Jim", "Gerry", "Jean", "Robert", "Susan", "Mary", "Jo", "Brian"]
 last_name=["Cameron", "Bender", "Neutron", "Simmons", "Jackson", "Smith", "Gardner", "Crocker","Black", "White"]
 from_place=["Fort Worth","Plano","Houston","Little Rock","Detroit","Memphis", "Dallas","Arlington","Jenks","Chicago","Tulsa", "Boise", "Desmoins", "Minnieapolis", "St. Louis"]
